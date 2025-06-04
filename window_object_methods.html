@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Window Object Examples</title>
+</head>
+<body>
+  <h1>JavaScript Window Object Examples</h1>
+
+  <button onclick="showAlert()">Show Alert</button>
+  <button onclick="showPrompt()">Show Prompt</button>
+  <button onclick="showConfirm()">Show Confirm</button>
+  <button onclick="openWindow()">Open New Window</button>
+  <button onclick="closeWindow()">Close New Window</button>
+  <button onclick="printPage()">Print This Page</button>
+
+  <p id="output"></p>
+
+  <script>
+    function showAlert() {
+      alert("This is an alert box!");
+    }
+
+    function showPrompt() {
+      const name = prompt("What is your name?");
+      if (name !== null) {
+        document.getElementById("output").textContent = "Hello, " + name + "!";
+      } else {
+        document.getElementById("output").textContent = "Prompt was cancelled.";
+      }
+    }
+
+    function showConfirm() {
+      const result = confirm("Do you want to continue?");
+      document.getElementById("output").textContent = result ? "You clicked OK." : "You clicked Cancel.";
+    }
+
+    let newWindow;
+    function openWindow() {
+      newWindow = window.open("", "", "width=300,height=200");
+      newWindow.document.write("<p>This is a new window.</p>");
+    }
+
+    function closeWindow() {
+      if (newWindow) {
+        newWindow.close();
+        newWindow = null;
+      } else {
+        alert("No window is open.");
+      }
+    }
+
+    function printPage() {
+      window.print();
+    }
+  </script>
+</body>
+</html>
